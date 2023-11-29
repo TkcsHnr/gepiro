@@ -3,7 +3,7 @@
 	import { rows } from '$lib/keys.json';
 </script>
 
-<div class="flex flex-col gap-2 p-8 mx-auto w-fit bg-base-200 rounded-2xl">
+<div class="flex flex-col gap-2 p-6 w-fit bg-base-200 rounded-2xl">
 	{#each rows as row}
 		<div class="flex w-full gap-2">
 			{#each row as key}

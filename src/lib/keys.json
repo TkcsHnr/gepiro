@@ -68,7 +68,7 @@
       {"code": "", "default": "", "shift": "", "altgr": "", "caps": ""},
       {"code": "AltLeft", "default": "Alt", "shift": "Alt", "altgr": "Alt", "caps": "Alt"},
       {"code": "Space", "default": "Space", "shift": "Space", "altgr": "Space", "caps": "Space", "grow": 1},
-      {"code": "AltRight", "default": "AltGr", "shift": "AltGr", "altgr": "AltGr", "caps": "AltGr"},
+      {"code": "AltRight", "default": "Alt", "shift": "Alt", "altgr": "Alt", "caps": "Alt"},
       {"code": "", "default": "", "shift": "", "altgr": "", "caps": ""},
       {"code": "", "default": "", "shift": "", "altgr": "", "caps": ""},
       {"code": "ControlRight", "default": "Ctrl", "shift": "Ctrl", "altgr": "Ctrl", "caps": "Ctrl"}
