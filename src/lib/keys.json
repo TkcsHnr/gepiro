@@ -1,0 +1,77 @@
+{
+  "rows": [
+    [
+      {"code": "Backquote", "default": "0", "shift": "§", "altgr": ""},
+      {"code": "Digit1", "default": "1", "shift": "'", "altgr": "~"},
+      {"code": "Digit2", "default": "2", "shift": "\"", "altgr": "ˇ"},
+      {"code": "Digit3", "default": "3", "shift": "+", "altgr": "^"},
+      {"code": "Digit4", "default": "4", "shift": "!", "altgr": "˘"},
+      {"code": "Digit5", "default": "5", "shift": "%", "altgr": "°"},
+      {"code": "Digit6", "default": "6", "shift": "/", "altgr": "˛"},
+      {"code": "Digit7", "default": "7", "shift": "=", "altgr": "`"},
+      {"code": "Digit8", "default": "8", "shift": "(", "altgr": "˙"},
+      {"code": "Digit9", "default": "9", "shift": ")", "altgr": "´"},
+      {"code": "Digit0", "default": "ö", "shift": "Ö", "altgr": "˝"},
+      {"code": "Minus", "default": "ü", "shift": "Ü", "altgr": "¨"},
+      {"code": "Equal", "default": "ó", "shift": "Ó", "altgr": "¸"},
+      {"code": "Backspace", "default": "Backspace", "shift": "Backspace", "altgr": "Backspace"}
+    ],
+    [
+      {"code": "Tab", "default": "Tab", "shift": "Tab", "altgr": "Tab"},
+      {"code": "KeyQ", "default": "q", "shift": "Q", "altgr": "\\"},
+      {"code": "KeyW", "default": "w", "shift": "W", "altgr": "|"},
+      {"code": "KeyE", "default": "e", "shift": "E", "altgr": "$"},
+      {"code": "KeyR", "default": "r", "shift": "R", "altgr": ""},
+      {"code": "KeyT", "default": "t", "shift": "T", "altgr": ""},
+      {"code": "KeyY", "default": "z", "shift": "Z", "altgr": ""},
+      {"code": "KeyU", "default": "u", "shift": "U", "altgr": "×"},
+      {"code": "KeyI", "default": "i", "shift": "I", "altgr": "Í"},
+      {"code": "KeyO", "default": "o", "shift": "O", "altgr": ""},
+      {"code": "KeyP", "default": "p", "shift": "P", "altgr": ""},
+      {"code": "BracketLeft", "default": "ő", "shift": "Ő", "altgr": "÷"},
+      {"code": "BracketRight", "default": "ú", "shift": "Ú", "altgr": "×"},
+      {"code": "", "default": "", "shift": "", "altgr": "", "grow": 1}
+    ],
+    [
+      {"code": "CapsLock", "default": "Caps", "shift": "Caps", "altgr": "Caps"},
+      {"code": "KeyA", "default": "a", "shift": "A", "altgr": "ä"},
+      {"code": "KeyS", "default": "s", "shift": "S", "altgr": "đ"},
+      {"code": "KeyD", "default": "d", "shift": "D", "altgr": "Đ"},
+      {"code": "KeyF", "default": "f", "shift": "F", "altgr": "["},
+      {"code": "KeyG", "default": "g", "shift": "G", "altgr": "]"},
+      {"code": "KeyH", "default": "h", "shift": "H", "altgr": ""},
+      {"code": "KeyJ", "default": "j", "shift": "J", "altgr": "í"},
+      {"code": "KeyK", "default": "k", "shift": "K", "altgr": "ł"},
+      {"code": "KeyL", "default": "l", "shift": "L", "altgr": "Ł"},
+      {"code": "Semicolon", "default": "é", "shift": "É", "altgr": "$"},
+      {"code": "Quote", "default": "á", "shift": "Á", "altgr": "ß"},
+      {"code": "Backslash", "default": "ű", "shift": "Ű", "altgr": "¤"},
+      {"code": "Enter", "default": "Enter", "shift": "Enter", "altgr": "Enter", "grow": 1}
+    ],
+    [
+      {"code": "ShiftLeft", "default": "Shift", "shift": "Shift", "altgr": "Shift"},
+      {"code": "IntlBackslash", "default": "í", "shift": "Í", "altgr": "<"},
+      {"code": "KeyZ", "default": "y", "shift": "Y", "altgr": ">"},
+      {"code": "KeyX", "default": "x", "shift": "X", "altgr": "#"},
+      {"code": "KeyC", "default": "c", "shift": "C", "altgr": "&"},
+      {"code": "KeyV", "default": "v", "shift": "V", "altgr": "@"},
+      {"code": "KeyB", "default": "b", "shift": "B", "altgr": "{"},
+      {"code": "KeyN", "default": "n", "shift": "N", "altgr": "}"},
+      {"code": "KeyM", "default": "m", "shift": "M", "altgr": "<"},
+      {"code": "Comma", "default": ",", "shift": "?", "altgr": ";"},
+      {"code": "Period", "default": ".", "shift": ":", "altgr": ">"},
+      {"code": "Slash", "default": "-", "shift": "_", "altgr": "*"},
+      {"code": "ShiftRight", "default": "Shift", "shift": "Shift", "altgr": "Shift", "grow": 1}
+    ],
+    [
+      {"code": "ControlLeft", "default": "Ctrl", "shift": "Ctrl", "altgr": "Ctrl"},
+      {"code": "", "default": "", "shift": "", "altgr": ""},
+      {"code": "AltLeft", "default": "Alt", "shift": "Alt", "altgr": "Alt"},
+      {"code": "Space", "default": "Space", "shift": "Space", "altgr": "Space", "grow": 1},
+      {"code": "AltRight", "default": "AltGr", "shift": "AltGr", "altgr": "AltGr"},
+      {"code": "", "default": "", "shift": "", "altgr": ""},
+      {"code": "", "default": "", "shift": "", "altgr": ""},
+      {"code": "ControlRight", "default": "Ctrl", "shift": "Ctrl", "altgr": "Ctrl"}
+    ]
+  ]
+}
