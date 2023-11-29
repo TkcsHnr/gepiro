@@ -7,9 +7,9 @@
 	{#each rows as row}
 		<div class="flex w-full gap-2">
 			{#each row as key}
-				<kbd class="kbd kbd-lg" 
+				<kbd class="kbd" 
                      class:grow={key['grow']}
-                     class:bg-primary={$pressedKeys.includes(key['code'])}
+                     class:active={$pressedKeys.includes(key['code'])}
                      class:border-primary={key.code == "CapsLock" && $caps}>
                     
                     {key[$keyboardState]}
@@ -18,3 +18,10 @@
 		</div>
 	{/each}
 </div>
+
+<style>
+    kbd.active {
+        background-color: oklch(var(--p));
+        color: oklch(var(--pc));
+    }
+</style>
