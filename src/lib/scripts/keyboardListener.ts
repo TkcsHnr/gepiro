@@ -1,5 +1,5 @@
 import { get } from "svelte/store";
-import { keyboardState, pressedKeys, caps, typedText } from "./stores/stores";
+import { keyboardState, pressedKeys, caps, typedText } from "../stores/stores";
 
 export function onKeyDown(e: KeyboardEvent) {
     pressedKeys.update(before => [...new Set([...before, e.code])])
@@ -11,7 +11,7 @@ export function onKeyDown(e: KeyboardEvent) {
     updateKeyboardState()
 
     // something is typed
-    if(e.key.length == 1 && !pressed.includes("ControlLeft") && !pressed.includes("ControlRight") && !pressed.includes("AltLeft")) {
+    if(e.key.length == 1) {
         typedText.set(get(typedText) + e.key)
     }
 

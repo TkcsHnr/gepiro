@@ -1,4 +1,4 @@
-import { wrapIndexes } from "./stores/stores";
+import { wrapIndexes } from "../stores/stores";
 
 export function assignWraps() {
     const text: any = document.querySelector("#text");
