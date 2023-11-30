@@ -2,61 +2,92 @@
 	export let text: string;
 
 	import { typedText, wrapIndexes } from '$lib/stores/stores';
-    import { assignWraps } from '$lib/wrapHandler';
-    import { onMount } from 'svelte';
+	import { assignWraps } from '$lib/scripts/wrapHandler';
+	import { onMount } from 'svelte';
+	import Caret from './Caret.svelte';
 
-    
-    $: wrapCount = $wrapIndexes.filter((i) => (i <= $typedText.length)).length;
+	const leading = 2;
 
-    onMount(() => {
-        assignWraps();
-    });
+	$: wrapCount = $wrapIndexes.filter((i) => i <= $typedText.length).length;
+	onMount(() => {
+		assignWraps();
+	});
 
-    $: wrapCount, shift();
-
-    let p: HTMLParagraphElement | null;
-    function shift(){
-        let translate = "translateY(" + (wrapCount * -2.5).toString() + "rem)";
-        if (p) {
-            p.style.transform = translate;
-        }
-            
-    }
-
+	let p: HTMLParagraphElement | null;
+	$: wrapCount, shift();
+	function shift() {
+		let translate = 'translateY(' + (wrapCount * -leading).toString() + 'rem)';
+		if (p) p.style.transform = translate;
+	}
 </script>
 
-<div class="max-w-5xl w-full overflow-hidden h-40 p-6 flex items-start relative">
-	<div class="w-full h-6 absolute top-0 left-0 bg-base-100 z-10"></div>
-	<p bind:this={p} id="text" class="leading-10 transition-transform">
+<div class="text-container">
+	<div class="cover top"></div>
+	<p bind:this={p} id="text" class="transition-transform">
 		{#each text as char, i}
 			<span
-				class="font-mono text-2xl text-neutral-content opacity-50 relative border-l-2 border-transparent"
 				class:active={i == $typedText.length}
-                class:opacity-100={$typedText.length > i}
-                class:wrong={$typedText.length > i && $typedText[i] != text[i]}
+				class:correct={$typedText.length > i && $typedText[i] == text[i]}
+				class:wrong={$typedText.length > i && $typedText[i] != text[i]}
+				class:space={text[i] == ' '}
 			>
 				{char}</span
 			>
 		{/each}
+		<Caret />
 	</p>
-	<div class="w-full h-6 absolute bottom-0 left-0 bg-base-100 z-10"></div>
+	<div class="cover bottom"></div>
 </div>
-{wrapCount}
 
-<style>
-    p#text span.active {
-        border-color: oklch(var(--p));
-        animation: blink 1s infinite;
-        animation-timing-function: step-end;
-    }
+<style lang="scss">
+	.text-container {
+		max-width: 75rem;
+		width: 100%;
+		overflow: hidden;
+		height: 9rem;
+		padding: 1.5rem;
 
-    .wrong {
-        color: oklch(var(--er));
-    }
+		display: flex;
+		align-items: start;
+		position: relative;
+	}
 
-    @keyframes blink {
-        50% {
-            border-color: transparent;
-        }
-    }
+	.cover {
+		width: 100%;
+		height: 1.5rem;
+		position: absolute;
+		left: 0;
+		background-color: oklch(var(--b1));
+		z-index: 10;
+
+		&.top {
+			top: 0;
+		}
+		&.bottom {
+			bottom: 0;
+		}
+	}
+
+	#text {
+		font-family: monospace;
+		font-size: 1.5rem;
+		line-height: 2rem;
+		color: oklch(var(--nc));
+		position: relative;
+	}
+
+	#text span {
+		opacity: 40%;
+		&.correct {
+			opacity: 100% !important;
+		}
+		&.wrong {
+			opacity: 100% !important;
+			color: oklch(var(--er));
+			&.space {
+				text-decoration: underline;
+				text-decoration-thickness: 2px;
+			}
+		}
+	}
 </style>

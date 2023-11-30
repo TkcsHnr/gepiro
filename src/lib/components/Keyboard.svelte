@@ -1,27 +1,68 @@
 <script lang="ts">
-	import { keyboardState, pressedKeys, caps } from '$lib/stores/stores';
+	import { keyboardState, caps, typedText, pressTheseKeys } from '$lib/stores/stores';
 	import { rows } from '$lib/keys.json';
+
+	export let text: string;
+
+	// indexoutofbound handle in future
+	$: nextLetter = text[$typedText.length];
+
+	$: nextLetter, updateKeys();
+	function updateKeys() {
+		if (nextLetter == ' ') {
+			nextLetter = 'Space';
+		}
+		rows.forEach((row) => {
+			row.forEach((key) => {
+				if (key.default == nextLetter) pressTheseKeys.set([key.code]);
+				else if (key.shift == nextLetter) pressTheseKeys.set([key.code, 'ShiftLeft']);
+				else if (key.altgr == nextLetter) pressTheseKeys.set([key.code, 'AltRight']);
+			});
+		});
+	}
 </script>
 
-<div class="flex flex-col gap-2 p-6 w-fit bg-base-200 rounded-2xl">
+<div class="keyboard">
 	{#each rows as row}
-		<div class="flex w-full gap-2">
+		<div class="row">
 			{#each row as key}
-				<kbd class="kbd" 
-                     class:grow={key['grow']}
-                     class:active={$pressedKeys.includes(key['code'])}
-                     class:border-primary={key.code == "CapsLock" && $caps}>
-                    
-                    {key[$keyboardState]}
-                </kbd>
+				<kbd
+					class="kbd transition-colors"
+					class:grow={key.grow}
+					class:caps={key.code == 'CapsLock' && $caps}
+					class:press={$pressTheseKeys.includes(key.code)}
+				>
+					{key[$keyboardState]}
+				</kbd>
 			{/each}
 		</div>
 	{/each}
 </div>
 
-<style>
-    kbd.active {
-        background-color: oklch(var(--p));
-        color: oklch(var(--pc));
-    }
+<style lang="scss">
+	.keyboard {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		padding: 1.5rem;
+		width: fit-content;
+		background-color: oklch(var(--b2));
+		border-radius: 1rem;
+
+		.row {
+			display: flex;
+			width: 100%;
+			gap: 0.5rem;
+		}
+	}
+	kbd {
+		transition-duration: 50ms;
+		&.press {
+			background-color: oklch(var(--p));
+			color: oklch(var(--pc));
+		}
+		&.caps {
+			border-color: oklch(var(--p));
+		}
+	}
 </style>
