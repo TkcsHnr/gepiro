@@ -3,18 +3,25 @@
 	import { assignWraps } from '$lib/scripts/wrapHandler';
 	import { onMount } from 'svelte';
 	import Caret from './Caret.svelte';
+	import { focusInput } from '$lib/scripts/focusInput';
+	import { generateWords } from '$lib/scripts/wordGenerator';
 
 	const leading = 2.5;
-
-	$: wrapCount = $wrapIndexes.filter((i) => i <= $typedText.length).length;
-	onMount(() => assignWraps());
-
+	
 	let p: HTMLParagraphElement | null;
+	$: wrapCount = $wrapIndexes.filter((i) => i <= $typedText.length).length;
 	$: wrapCount, shift();
 	function shift() {
 		let translate = 'translateY(' + (wrapCount * -leading).toString() + 'rem)';
 		if (p) p.style.transform = translate;
 	}
+
+	onMount(() => {
+		generateWords(50).then(() => {
+			assignWraps();
+			focusInput();
+		})
+	});
 
 	function focusin() {
 		inputFocused.set(true);
@@ -25,7 +32,7 @@
 </script>
 
 <div class="text-container transition-[filter]" class:blur-sm={!$inputFocused}>
-	<p bind:this={p} id="text" class="transition-transform">
+	<p bind:this={p} id="text" class="transition-transform duration-100">
 		{#each $text as char, i}
 			<span
 				class:active={i == $typedText.length}
@@ -46,13 +53,13 @@
 
 <style lang="scss">
 	.text-container {
-		max-width: 70rem;
+		max-width: 65rem;
 		width: 100%;
 		overflow: hidden;
 		height: 7.5rem;
 
 		display: flex;
-		align-items: start;
+		align-items: flex-start;
 		position: relative;
 	}
 
