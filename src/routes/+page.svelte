@@ -4,13 +4,20 @@
 
 	import { onKeyDown, onKeyUp } from '$lib/scripts/keyboardListener';
 
-	const text: string = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt facilis doloribus at atque excepturi repudiandae, illo nam magnam quisquam dignissimos ipsum reiciendis facere quod, et ipsam, eos eius beatae officia id dolorum. Autem tempora, quaerat qui modi non voluptate nostrum architecto neque eaque ipsum, sed, molestiae at error. Sit culpa laudantium asperiores perferendis cupiditate voluptatum excepturi impedit odio, aperiam voluptatibus adipisci, pariatur qui recusandae! Minima, praesentium. Exercitationem iste debitis dicta accusantium maiores incidunt temporibus soluta, mollitia consequuntur tempora, fuga ullam quibusdam voluptatem ducimus fugiat accusamus iusto quod corporis totam tempore in. Delectus laborum perspiciatis at. Suscipit enim est saepe nihil.";
-	
+	import { text } from '$lib/stores/stores';
+	import { keyboard } from '$lib/stores/options';
+	import RestartButton from '$lib/components/RestartButton.svelte';
+
+	text.set('jjj ddd fff fjfj fddj jddf fjkd kkk dkk kdfj');
 </script>
-<main class="flex flex-col h-full items-center justify-center gap-8">
-	<TextArea {text}></TextArea>
 
-	<Keyboard {text}></Keyboard>
+<div class="flex flex-col h-full items-center justify-center gap-8">
+	<TextArea></TextArea>
 
-</main>
+	<RestartButton />
+
+	{#if $keyboard}
+		<Keyboard></Keyboard>
+	{/if}
+</div>
 <svelte:window on:keydown={onKeyDown} on:keyup={onKeyUp} />

@@ -1,7 +1,5 @@
 <script lang="ts">
-	export let text: string;
-
-	import { typedText, wrapIndexes, inputFocused } from '$lib/stores/stores';
+	import { text, typedText, wrapIndexes, inputFocused } from '$lib/stores/stores';
 	import { assignWraps } from '$lib/scripts/wrapHandler';
 	import { onMount } from 'svelte';
 	import Caret from './Caret.svelte';
@@ -18,9 +16,6 @@
 		if (p) p.style.transform = translate;
 	}
 
-	let input: string = '';
-	$: input, typedText.set(input);
-
 	function focusin() {
 		inputFocused.set(true);
 	}
@@ -29,14 +24,14 @@
 	}
 </script>
 
-<div class="text-container" class:blur-sm={!$inputFocused}>
+<div class="text-container transition-[filter]" class:blur-sm={!$inputFocused}>
 	<p bind:this={p} id="text" class="transition-transform">
-		{#each text as char, i}
+		{#each $text as char, i}
 			<span
 				class:active={i == $typedText.length}
-				class:correct={$typedText.length > i && $typedText[i] == text[i]}
-				class:wrong={$typedText.length > i && $typedText[i] != text[i]}
-				class:space={text[i] == ' '}
+				class:correct={$typedText.length > i && $typedText[i] == $text[i]}
+				class:wrong={$typedText.length > i && $typedText[i] != $text[i]}
+				class:space={$text[i] == ' '}
 			>
 				{char}</span
 			>
@@ -45,7 +40,7 @@
 			<Caret />
 		{/if}
 	</p>
-	<textarea bind:value={input} on:focusout={focusout} on:focusin={focusin} id="textInput" />
+	<textarea bind:value={$typedText} on:focusout={focusout} on:focusin={focusin} id="textInput" />
 </div>
 <svelte:window on:resize={assignWraps} />
 

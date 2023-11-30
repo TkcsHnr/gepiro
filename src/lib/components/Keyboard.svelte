@@ -1,11 +1,9 @@
 <script lang="ts">
-	import { keyboardState, caps, typedText, pressTheseKeys, pressedKeys } from '$lib/stores/stores';
+	import { keyboardState, caps, text, typedText, pressTheseKeys, pressedKeys } from '$lib/stores/stores';
 	import { rows } from '$lib/keys.json';
 
-	export let text: string;
-
 	// indexoutofbound handle in future
-	$: nextLetter = text[$typedText.length];
+	$: nextLetter = $text[$typedText.length];
 
 	$: nextLetter, updateKeys();
 	function updateKeys() {
@@ -43,10 +41,7 @@
 		display: flex;
 		flex-direction: column;
 		gap: 0.25rem;
-		padding: 1rem;
-		width: fit-content;
-		background-color: oklch(var(--b2));
-		border-radius: 1rem;
+		width: 48rem;
 
 		.row {
 			display: flex;

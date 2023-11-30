@@ -1,5 +1,6 @@
 import { get } from "svelte/store";
 import { keyboardState, pressedKeys, caps } from "../stores/stores";
+import { focusInput } from "./focusInput";
 
 export function onKeyDown(e: KeyboardEvent) {
     pressedKeys.update(before => [...new Set([...before, e.code])]);
@@ -11,13 +12,11 @@ export function onKeyDown(e: KeyboardEvent) {
 }
 
 export function onKeyUp(e: KeyboardEvent) {
-    pressedKeys.update(before => before.filter((k) => k != e.code))
+    pressedKeys.update(before => before.filter((k) => k != e.code));
 
-    const input: HTMLTextAreaElement | null = document.querySelector("#textInput");
-    if (input)
-        input.focus();
+    focusInput();
 
-    updateKeyboardState(e)
+    updateKeyboardState(e);
 }
 
 function updateKeyboardState(e: KeyboardEvent) {

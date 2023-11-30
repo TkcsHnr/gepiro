@@ -14,10 +14,10 @@
       {"code": "Digit0", "default": "ö", "shift": "Ö", "altgr": "˝", "caps": "Ö"},
       {"code": "Minus", "default": "ü", "shift": "Ü", "altgr": "¨", "caps": "Ü"},
       {"code": "Equal", "default": "ó", "shift": "Ó", "altgr": "¸", "caps": "Ó"},
-      {"code": "Backspace", "default": "Backspace", "shift": "Backspace", "altgr": "Backspace", "caps": "Backspace"}
+      {"code": "Backspace", "default": "backspace", "shift": "backspace", "altgr": "backspace", "caps": "backspace", "grow": 1}
     ],
     [
-      {"code": "Tab", "default": "Tab", "shift": "Tab", "altgr": "Tab", "caps": "Tab"},
+      {"code": "Tab", "default": "tab", "shift": "tab", "altgr": "tab", "caps": "tab"},
       {"code": "KeyQ", "default": "q", "shift": "Q", "altgr": "\\", "caps": "Q"},
       {"code": "KeyW", "default": "w", "shift": "W", "altgr": "|", "caps": "W"},
       {"code": "KeyE", "default": "e", "shift": "E", "altgr": "$", "caps": "E"},
@@ -33,7 +33,7 @@
       {"code": "", "default": "", "shift": "", "altgr": "", "caps": "", "grow": 1}
     ],
     [
-      {"code": "CapsLock", "default": "Caps", "shift": "Caps", "altgr": "Caps", "caps": "Caps"},
+      {"code": "CapsLock", "default": "caps", "shift": "caps", "altgr": "caps", "caps": "caps"},
       {"code": "KeyA", "default": "a", "shift": "A", "altgr": "ä", "caps": "A"},
       {"code": "KeyS", "default": "s", "shift": "S", "altgr": "đ", "caps": "S"},
       {"code": "KeyD", "default": "d", "shift": "D", "altgr": "Đ", "caps": "D"},
@@ -46,10 +46,10 @@
       {"code": "Semicolon", "default": "é", "shift": "É", "altgr": "$", "caps": "É"},
       {"code": "Quote", "default": "á", "shift": "Á", "altgr": "ß", "caps": "Á"},
       {"code": "Backslash", "default": "ű", "shift": "Ű", "altgr": "¤", "caps": "Ű"},
-      {"code": "Enter", "default": "Enter", "shift": "Enter", "altgr": "Enter", "caps": "Enter", "grow": 1}
+      {"code": "Enter", "default": "enter", "shift": "enter", "altgr": "enter", "caps": "enter", "grow": 1}
     ],
     [
-      {"code": "ShiftLeft", "default": "Shift", "shift": "Shift", "altgr": "Shift", "caps": "Shift"},
+      {"code": "ShiftLeft", "default": "shift", "shift": "shift", "altgr": "shift", "caps": "shift"},
       {"code": "IntlBackslash", "default": "í", "shift": "Í", "altgr": "<", "caps": "Í"},
       {"code": "KeyZ", "default": "y", "shift": "Y", "altgr": ">", "caps": "Y"},
       {"code": "KeyX", "default": "x", "shift": "X", "altgr": "#", "caps": "X"},
@@ -61,19 +61,18 @@
       {"code": "Comma", "default": ",", "shift": "?", "altgr": ";", "caps": ","},
       {"code": "Period", "default": ".", "shift": ":", "altgr": ">", "caps": "."},
       {"code": "Slash", "default": "-", "shift": "_", "altgr": "*", "caps": "-"},
-      {"code": "ShiftRight", "default": "Shift", "shift": "Shift", "altgr": "Shift", "caps": "Shift", "grow": 1}
+      {"code": "ShiftRight", "default": "shift", "shift": "shift", "altgr": "shift", "caps": "shift", "grow": 1}
     ],
     [
-      {"code": "ControlLeft", "default": "Ctrl", "shift": "Ctrl", "altgr": "Ctrl", "caps": "Ctrl"},
+      {"code": "ControlLeft", "default": "ctrl", "shift": "ctrl", "altgr": "ctrl", "caps": "ctrl"},
       {"code": "", "default": "", "shift": "", "altgr": "", "caps": ""},
       {"code": "", "default": "", "shift": "", "altgr": "", "caps": ""},
-      {"code": "AltLeft", "default": "Alt", "shift": "Alt", "altgr": "Alt", "caps": "Alt"},
+      {"code": "AltLeft", "default": "alt", "shift": "alt", "altgr": "alt", "caps": "alt"},
       {"code": "Space", "default": "Space", "shift": "Space", "altgr": "Space", "caps": "Space", "grow": 1},
-      {"code": "AltRight", "default": "AltGr", "shift": "AltGr", "altgr": "AltGr", "caps": "AltGr"},
+      {"code": "AltRight", "default": "altgr", "shift": "altgr", "altgr": "altgr", "caps": "altgr"},
       {"code": "", "default": "", "shift": "", "altgr": "", "caps": ""},
       {"code": "", "default": "", "shift": "", "altgr": "", "caps": ""},
-      {"code": "", "default": "", "shift": "", "altgr": "", "caps": ""},
-      {"code": "ControlRight", "default": "Ctrl", "shift": "Ctrl", "altgr": "Ctrl", "caps": "Ctrl"}
+      {"code": "ControlRight", "default": "ctrl", "shift": "ctrl", "altgr": "ctrl", "caps": "ctrl"}
     ]
   ],
   "shifts": [
