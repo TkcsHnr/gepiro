@@ -1,17 +1,15 @@
 <script lang="ts">
 	export let text: string;
 
-	import { typedText, wrapIndexes } from '$lib/stores/stores';
+	import { typedText, wrapIndexes, inputFocused } from '$lib/stores/stores';
 	import { assignWraps } from '$lib/scripts/wrapHandler';
 	import { onMount } from 'svelte';
 	import Caret from './Caret.svelte';
 
-	const leading = 2;
+	const leading = 2.5;
 
 	$: wrapCount = $wrapIndexes.filter((i) => i <= $typedText.length).length;
-	onMount(() => {
-		assignWraps();
-	});
+	onMount(() => assignWraps());
 
 	let p: HTMLParagraphElement | null;
 	$: wrapCount, shift();
@@ -19,10 +17,19 @@
 		let translate = 'translateY(' + (wrapCount * -leading).toString() + 'rem)';
 		if (p) p.style.transform = translate;
 	}
+
+	let input: string = '';
+	$: input, typedText.set(input);
+
+	function focusin() {
+		inputFocused.set(true);
+	}
+	function focusout() {
+		inputFocused.set(false);
+	}
 </script>
 
-<div class="text-container">
-	<div class="cover top"></div>
+<div class="text-container" class:blur-sm={!$inputFocused}>
 	<p bind:this={p} id="text" class="transition-transform">
 		{#each text as char, i}
 			<span
@@ -34,45 +41,41 @@
 				{char}</span
 			>
 		{/each}
-		<Caret />
+		{#if $inputFocused}
+			<Caret />
+		{/if}
 	</p>
-	<div class="cover bottom"></div>
+	<textarea bind:value={input} on:focusout={focusout} on:focusin={focusin} id="textInput" />
 </div>
+<svelte:window on:resize={assignWraps} />
 
 <style lang="scss">
 	.text-container {
-		max-width: 75rem;
+		max-width: 70rem;
 		width: 100%;
 		overflow: hidden;
-		height: 9rem;
-		padding: 1.5rem;
+		height: 7.5rem;
 
 		display: flex;
 		align-items: start;
 		position: relative;
 	}
 
-	.cover {
+	#textInput {
 		width: 100%;
-		height: 1.5rem;
+		height: 100%;
 		position: absolute;
 		left: 0;
-		background-color: oklch(var(--b1));
-		z-index: 10;
-
-		&.top {
-			top: 0;
-		}
-		&.bottom {
-			bottom: 0;
-		}
+		top: 0;
+		z-index: 15;
+		opacity: 0;
 	}
 
 	#text {
 		font-family: monospace;
 		font-size: 1.5rem;
-		line-height: 2rem;
-		color: oklch(var(--nc));
+		line-height: 2.5rem;
+		color: oklch(var(--bc));
 		position: relative;
 	}
 

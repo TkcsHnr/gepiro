@@ -11,5 +11,6 @@
 	<TextArea {text}></TextArea>
 
 	<Keyboard {text}></Keyboard>
+
 </main>
 <svelte:window on:keydown={onKeyDown} on:keyup={onKeyUp} />

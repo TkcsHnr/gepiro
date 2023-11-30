@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { keyboardState, caps, typedText, pressTheseKeys } from '$lib/stores/stores';
+	import { keyboardState, caps, typedText, pressTheseKeys, pressedKeys } from '$lib/stores/stores';
 	import { rows } from '$lib/keys.json';
 
 	export let text: string;
@@ -9,9 +9,7 @@
 
 	$: nextLetter, updateKeys();
 	function updateKeys() {
-		if (nextLetter == ' ') {
-			nextLetter = 'Space';
-		}
+		nextLetter = nextLetter.replace(' ', 'Space');
 		rows.forEach((row) => {
 			row.forEach((key) => {
 				if (key.default == nextLetter) pressTheseKeys.set([key.code]);
@@ -27,10 +25,11 @@
 		<div class="row">
 			{#each row as key}
 				<kbd
-					class="kbd transition-colors"
+					class="kbd kbd-lg transition-colors"
 					class:grow={key.grow}
 					class:caps={key.code == 'CapsLock' && $caps}
 					class:press={$pressTheseKeys.includes(key.code)}
+					class:active={$pressedKeys.includes(key.code)}
 				>
 					{key[$keyboardState]}
 				</kbd>
@@ -43,8 +42,8 @@
 	.keyboard {
 		display: flex;
 		flex-direction: column;
-		gap: 0.5rem;
-		padding: 1.5rem;
+		gap: 0.25rem;
+		padding: 1rem;
 		width: fit-content;
 		background-color: oklch(var(--b2));
 		border-radius: 1rem;
@@ -52,7 +51,7 @@
 		.row {
 			display: flex;
 			width: 100%;
-			gap: 0.5rem;
+			gap: 0.25rem;
 		}
 	}
 	kbd {
@@ -62,7 +61,11 @@
 			color: oklch(var(--pc));
 		}
 		&.caps {
-			border-color: oklch(var(--p));
+			border-color: oklch(var(--in));
+		}
+		&.active {
+			background-color: oklch(var(--in));
+			color: oklch(var(--inc));
 		}
 	}
 </style>

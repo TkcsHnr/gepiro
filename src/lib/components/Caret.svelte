@@ -3,7 +3,7 @@
     import { typedText } from "$lib/stores/stores";
 	import { onMount } from "svelte";
 
-    $: $typedText.length, updateCaret();
+    $: $typedText, updateCaret();
 
     let caret: HTMLDivElement | null;
     function updateCaret() {
