@@ -5,9 +5,6 @@ import { focusInput } from "./focusInput";
 export function onKeyDown(e: KeyboardEvent) {
     pressedKeys.update(before => [...new Set([...before, e.code])]);
 
-    if (e.code == "CapsLock")
-        caps.set(!get(caps));
-
     updateKeyboardState(e);
 }
 
@@ -24,6 +21,7 @@ function updateKeyboardState(e: KeyboardEvent) {
     let alt: boolean = e.getModifierState("Alt");
     let ctrl: boolean = e.getModifierState("Control");
     let altgr: boolean = e.getModifierState("AltGraph");
+    caps.set(e.getModifierState("CapsLock"));
 
     if (get(caps) && !alt && !ctrl && !altgr)
         if (shift)

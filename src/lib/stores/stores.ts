@@ -9,6 +9,4 @@ export const wrapIndexes: Writable<number[]> = writable([])
 export const typedText: Writable<string> = writable("")
 export const text: Writable<string> = writable("")
 
-export const pressTheseKeys: Writable<string[]> = writable([])
-
 export const inputFocused: Writable<boolean> = writable(false)

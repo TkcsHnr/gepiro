@@ -37,7 +37,7 @@
 			<span
 				class:active={i == $typedText.length}
 				class:correct={$typedText.length > i && $typedText[i] == $text[i]}
-				class:wrong={$typedText.length > i && $typedText[i] != $text[i]}
+				class:incorrect={$typedText.length > i && $typedText[i] != $text[i]}
 				class:space={$text[i] == ' '}
 			>
 				{char}</span
@@ -86,7 +86,7 @@
 		&.correct {
 			opacity: 100% !important;
 		}
-		&.wrong {
+		&.incorrect {
 			opacity: 100% !important;
 			color: oklch(var(--er));
 			&.space {

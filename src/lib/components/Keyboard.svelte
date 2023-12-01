@@ -1,21 +1,28 @@
 <script lang="ts">
-	import { keyboardState, caps, text, typedText, pressTheseKeys, pressedKeys } from '$lib/stores/stores';
+	import { keyboardState, caps, text, typedText, pressedKeys } from '$lib/stores/stores';
 	import { rows } from '$lib/keys.json';
+	import { onMount } from 'svelte';
 
-	// indexoutofbound handle in future
-	$: nextLetter = $text[$typedText.length];
+	$: correct = $typedText[$typedText.length - 1] == $text[$typedText.length - 1];
 
-	$: nextLetter, updateKeys();
+	function emptyStringArray(): string[] {
+		return [];
+	}
+	$: pressTheseKeys = emptyStringArray();
+
+	$: $typedText, updateKeys();
 	function updateKeys() {
-		nextLetter = nextLetter.replace(' ', 'Space');
+		let nextLetter: string = $text[$typedText.length]?.replace(' ', 'Space');
+		if (!nextLetter) return;
 		rows.forEach((row) => {
 			row.forEach((key) => {
-				if (key.default == nextLetter) pressTheseKeys.set([key.code]);
-				else if (key.shift == nextLetter) pressTheseKeys.set([key.code, 'ShiftLeft']);
-				else if (key.altgr == nextLetter) pressTheseKeys.set([key.code, 'AltRight']);
+				if (key.default == nextLetter) pressTheseKeys = [key.code];
+				else if (key.shift == nextLetter) pressTheseKeys = [key.code, 'ShiftLeft'];
+				else if (key.altgr == nextLetter) pressTheseKeys = [key.code, 'AltRight'];
 			});
 		});
 	}
+	onMount(() => updateKeys());
 </script>
 
 <div class="keyboard">
@@ -26,8 +33,9 @@
 					class="kbd kbd-lg transition-colors"
 					class:grow={key.grow}
 					class:caps={key.code == 'CapsLock' && $caps}
-					class:press={$pressTheseKeys.includes(key.code)}
-					class:active={$pressedKeys.includes(key.code)}
+					class:press={pressTheseKeys.includes(key.code)}
+					class:correct={$pressedKeys.includes(key.code) && correct}
+					class:incorrect={$pressedKeys.includes(key.code) && !correct}
 				>
 					{key[$keyboardState]}
 				</kbd>
@@ -56,11 +64,13 @@
 			color: oklch(var(--pc));
 		}
 		&.caps {
-			border-color: oklch(var(--in));
+			border-color: oklch(var(--wa));
 		}
-		&.active {
-			background-color: oklch(var(--in));
-			color: oklch(var(--inc));
+		&.correct {
+			border-color: oklch(var(--su));
+		}
+		&.incorrect {
+			border-color: oklch(var(--er));
 		}
 	}
 </style>

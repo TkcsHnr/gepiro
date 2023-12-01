@@ -1,15 +1,15 @@
 <script>
-	import { text, typedText } from "$lib/stores/stores";
+	import { typedText } from "$lib/stores/stores";
 	import { focusInput } from "$lib/scripts/focusInput";
 	import { generateWords } from "$lib/scripts/wordGenerator";
 	import { assignWraps } from "$lib/scripts/wrapHandler";
 
 	function restart() {
-		typedText.set("");
 		generateWords(50).then(() => {
 			assignWraps();
-			focusInput();
-		})
+		});
+		typedText.set("");
+		focusInput();
 	}
 </script>
 
