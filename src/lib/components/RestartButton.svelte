@@ -1,5 +1,5 @@
 <script>
-	import { typedText } from "$lib/stores/stores";
+	import { appState, typedText } from "$lib/stores/stores";
 	import { focusInput } from "$lib/scripts/focusInput";
 	import { generateWords } from "$lib/scripts/wordGenerator";
 	import { assignWraps } from "$lib/scripts/wrapHandler";
@@ -8,6 +8,7 @@
 		generateWords(50).then(() => {
 			assignWraps();
 		});
+		appState.set("default");
 		typedText.set("");
 		focusInput();
 	}

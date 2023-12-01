@@ -11,7 +11,7 @@
 	}
 	$: pressTheseKeys = emptyStringArray();
 
-	$: $typedText, updateKeys();
+	$: $typedText || $text, updateKeys();
 	function updateKeys() {
 		let nextLetter: string = $text[$typedText.length]?.replace(' ', 'Space');
 		if (!nextLetter) return;
@@ -51,6 +51,7 @@
 		flex-direction: column;
 		gap: 0.25rem;
 		width: 48rem;
+		margin-top: 2rem;
 
 		.row {
 			display: flex;
@@ -69,9 +70,11 @@
 		}
 		&.correct {
 			border-color: oklch(var(--su));
+			color: oklch(var(--su));
 		}
 		&.incorrect {
 			border-color: oklch(var(--er));
+			color: oklch(var(--er));
 		}
 	}
 </style>

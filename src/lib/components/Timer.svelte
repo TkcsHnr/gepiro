@@ -1,0 +1,64 @@
+<script lang="ts">
+    import { appState } from "$lib/stores/stores";
+    import { duration } from "$lib/stores/options";
+	import { get } from "svelte/store";
+
+    let timer: number;
+    $: time = get(duration);
+
+    $: $appState, handleState();
+    function handleState() {
+        switch($appState) {
+            case "running":
+                start();
+                break;
+            case "results":
+                stop();
+                break;
+            case "default":
+                reset();
+                break;
+        }
+    }
+
+    function start() {
+        timer = setInterval(() => {
+            time--;
+            if(time == 0) end();
+        }, 1000);
+    }
+
+    function end() {
+        appState.set("results");
+        stop();
+    }
+
+    function stop() {
+        clearInterval(timer);
+    }   
+
+    function reset() {
+        stop();
+        time = $duration;
+    }
+</script>
+
+<div class="timer font-mono transition-opacity"
+     class:show={$appState == "running"}>
+    {time}
+</div>
+
+<style>
+    .timer {
+        display: flex;
+        font-size: 1.5rem;
+        color: oklch(var(--p));
+        height: 2rem;
+        width: 100%;
+        opacity: 0;
+
+        &.show {
+            opacity: 100% !important;
+        }
+    }
+</style>

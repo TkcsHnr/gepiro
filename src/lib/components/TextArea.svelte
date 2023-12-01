@@ -1,18 +1,18 @@
 <script lang="ts">
-	import { text, typedText, inputFocused } from '$lib/stores/stores';
+	import { text, typedText, inputFocused, appState } from '$lib/stores/stores';
 	import { assignWraps, wrapIndexes } from '$lib/scripts/wrapHandler';
 	import { onMount } from 'svelte';
 	import Caret from './Caret.svelte';
 	import { focusInput } from '$lib/scripts/focusInput';
 	import { generateWords } from '$lib/scripts/wordGenerator';
 
-	const leading = 2.5;
-	
+	const textLineHeight = 2.5;
+
 	let p: HTMLParagraphElement | null;
 	$: wrapCount = $wrapIndexes.filter((i) => i <= $typedText.length).length;
 	$: wrapCount, shift();
 	function shift() {
-		let translate = 'translateY(' + (wrapCount * -leading).toString() + 'rem)';
+		let translate = 'translateY(' + (wrapCount * -textLineHeight).toString() + 'rem)';
 		if (p) p.style.transform = translate;
 	}
 
@@ -20,8 +20,15 @@
 		generateWords(50).then(() => {
 			assignWraps();
 			focusInput();
-		})
+		});
 	});
+
+	$: $typedText, start();
+	function start() {
+		if ($appState == 'default' && $typedText.length > 0) {
+			appState.set('running');
+		}
+	}
 
 	function focusin() {
 		inputFocused.set(true);
@@ -38,7 +45,7 @@
 				class:active={i == $typedText.length}
 				class:correct={$typedText.length > i && $typedText[i] == $text[i]}
 				class:incorrect={$typedText.length > i && $typedText[i] != $text[i]}
-				class:space={$text[i] == ' '}
+				class:space={char == ' '}
 			>
 				{char}</span
 			>
@@ -53,10 +60,10 @@
 
 <style lang="scss">
 	.text-container {
-		max-width: 65rem;
 		width: 100%;
 		overflow: hidden;
 		height: 7.5rem;
+		padding: 1px;
 
 		display: flex;
 		align-items: flex-start;
@@ -75,7 +82,7 @@
 
 	#text {
 		font-family: monospace;
-		font-size: 1.5rem;
+		font-size: 1.75rem;
 		line-height: 2.5rem;
 		color: oklch(var(--bc));
 		position: relative;
