@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { text, typedText, wrapIndexes, inputFocused } from '$lib/stores/stores';
-	import { assignWraps } from '$lib/scripts/wrapHandler';
+	import { text, typedText, inputFocused } from '$lib/stores/stores';
+	import { assignWraps, wrapIndexes } from '$lib/scripts/wrapHandler';
 	import { onMount } from 'svelte';
 	import Caret from './Caret.svelte';
 	import { focusInput } from '$lib/scripts/focusInput';

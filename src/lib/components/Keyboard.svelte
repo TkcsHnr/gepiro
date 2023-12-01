@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { keyboardState, caps, text, typedText, pressedKeys } from '$lib/stores/stores';
+	import { text, typedText } from '$lib/stores/stores';
+	import { keyboardState, caps, pressedKeys } from '$lib/scripts/keyboardListener';
 	import { rows } from '$lib/keys.json';
 	import { onMount } from 'svelte';
 

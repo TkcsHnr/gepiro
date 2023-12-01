@@ -1,4 +1,6 @@
-import { wrapIndexes } from "$lib/stores/stores";
+import { writable, type Writable } from "svelte/store";
+
+export const wrapIndexes: Writable<number[]> = writable([])
 
 export function assignWraps(): void {
     const text: HTMLParagraphElement | null = document.querySelector("#text");

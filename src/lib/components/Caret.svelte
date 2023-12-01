@@ -30,7 +30,7 @@
 	});
 </script>
 
-<div bind:this={caret} class="caret blink"></div>
+<div bind:this={caret} class="caret blink"> </div>
 
 <style>
 	.caret {

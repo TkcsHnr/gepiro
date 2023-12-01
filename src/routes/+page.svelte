@@ -9,9 +9,9 @@
 </script>
 
 <div class="flex flex-col h-full items-center justify-center gap-8">
-	<TextArea></TextArea>
-
 	<RestartButton />
+	
+	<TextArea></TextArea>
 
 	{#if $keyboard}
 		<Keyboard></Keyboard>

@@ -1,6 +1,9 @@
-import { get } from "svelte/store";
-import { keyboardState, pressedKeys, caps } from "../stores/stores";
+import { get, writable, type Writable } from "svelte/store";
 import { focusInput } from "./focusInput";
+
+export const keyboardState: Writable<"default" | "shift" | "altgr" | "caps"> = writable("default");
+export const pressedKeys: Writable<string[]> = writable([]);
+export const caps: Writable<boolean> = writable(false);
 
 export function onKeyDown(e: KeyboardEvent) {
     pressedKeys.update(before => [...new Set([...before, e.code])]);
