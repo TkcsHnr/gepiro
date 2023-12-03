@@ -16,7 +16,7 @@ import '../app.css';
 		align-items: center;
 		width: 100%;
 		max-width: 80rem;
-		padding: 0 2rem 2rem 2rem !important;
+		padding: 0 1rem 2rem 1rem !important;
 		position: relative;
 	}
 </style>

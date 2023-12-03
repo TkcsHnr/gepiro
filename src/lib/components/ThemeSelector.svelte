@@ -10,9 +10,9 @@
 	});
 </script>
 
-<div class="flex w-full flex-wrap gap-2">
+<div id="grid">
 	{#each themes as theme}
-        <button data-set-theme="{theme}" class="btn btn-lg font-mono flex flex-col border-base-300" data-theme={theme}>
+        <button data-set-theme="{theme}" class="btn btn-lg font-mono" data-theme={theme}>
             {theme}
             <p>
                 <span class="badge badge-primary">A</span>
@@ -22,3 +22,17 @@
         </button>
 	{/each}
 </div>
+
+<style lang="scss">
+    #grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    .btn {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        border-color: oklch(var(--b3));
+    }
+</style>

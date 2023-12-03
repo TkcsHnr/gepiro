@@ -12,8 +12,8 @@
 	</div>
 	<div class="divider"></div>
 	<div class="row">
-		<p>Teszt ideje:</p>
-		<div class="flex gap-2 grow">
+		<p>Teszt ideje (másodperc):</p>
+		<div class="flex gap-4 grow">
 			{#each [15, 30, 60, 90] as time}
 				<button
 					type="button"

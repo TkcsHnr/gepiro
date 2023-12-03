@@ -28,8 +28,6 @@
 	}
 </script>
 
-<h1>Eredmény:</h1>
-
 <div class="flex gap-4 p-8">
 	<div class="stats shadow">
 		<div class="stat" title="leírt szavak/perc">
@@ -59,12 +57,6 @@
 </div>
 
 <style lang="scss">
-	h1 {
-		font-size: 1.5rem;
-		line-height: 1.5rem;
-		font-weight: bold;
-		color: oklch(var(--bc));
-	}
 	.stat-title {
 		font-size: 1.5rem;
 		color: oklch(var(--p));

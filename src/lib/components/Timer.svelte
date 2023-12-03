@@ -49,7 +49,7 @@
     .timer {
         display: flex;
         font-size: 1.5rem;
-        padding: 0 .5rem;
+        padding: 0 4px; //blur size
         color: oklch(var(--p));
         height: 2rem;
         width: 100%;

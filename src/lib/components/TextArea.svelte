@@ -99,7 +99,7 @@
 	#text {
 		font-size: 1.75rem;
 		line-height: 2.5rem;
-		padding: 0 0.5rem;
+		padding: 0 4px; //blur size
 		color: oklch(var(--bc));
 		position: relative;
 
