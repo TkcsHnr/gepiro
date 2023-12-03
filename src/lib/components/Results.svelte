@@ -33,11 +33,11 @@
 
 <div class="flex gap-4 p-8">
 	<div class="stats shadow">
-		<div class="stat" >
+		<div class="stat" title="leírt szavak/perc">
 			<div class="stat-title">wpm</div>
 			<div class="stat-value">{wpm.toFixed(0)}</div>
 		</div>
-		<div class="stat">
+		<div class="stat" title="leírt karakterek/perc">
 			<div class="stat-title">cpm</div>
 			<div class="stat-value">{cpm.toFixed(0)}</div>
 		</div>
@@ -48,21 +48,21 @@
 			<div class="stat-title">pontosság</div>
 			<div class="stat-value">{accuracy.toFixed(0)}%</div>
 		</div>
-		<div class="stat">
+		<div class="stat" title="helyesen leírt karakterek">
 			<div class="stat-title">helyes</div>
-			<div class="stat-value" title="helyes karakterleütések száma">{correct}</div>
+			<div class="stat-value">{correct}</div>
 		</div>
-		<div class="stat">
+		<div class="stat" title="helytelenül leírt karakterek">
 			<div class="stat-title">helytelen</div>
-			<div class="stat-value" title="helytelen karakterleütések száma">{incorrect}</div>
+			<div class="stat-value">{incorrect}</div>
 		</div>
 	</div>
 </div>
 
 <style lang="scss">
 	h1 {
-		font-size: 2.25rem;
-		line-height: 2.25rem;
+		font-size: 2rem;
+		line-height: 2rem;
 	}
 	.stat-title {
 		font-size: 1.5rem;

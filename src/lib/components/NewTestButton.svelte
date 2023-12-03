@@ -5,7 +5,7 @@
 	import { assignWraps } from "$lib/scripts/wrapHandler";
 
     function startNew() {
-        generateWords(100).then(() => {
+        generateWords().then(() => {
 			assignWraps();
 		});
 		typedText.set('');

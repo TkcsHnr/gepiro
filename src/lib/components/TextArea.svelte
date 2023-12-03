@@ -18,7 +18,8 @@
 	}
 
 	onMount(() => {
-		generateWords(100).then(() => {
+		// max 200 wpm-nyi szó
+		generateWords().then(() => {
 			assignWraps();
 			focusInput();
 		});
