@@ -13,21 +13,17 @@
 	<div class="divider"></div>
 	<div class="row">
 		<p>Teszt ideje:</p>
-		<div class="grow">
-			<div class="w-full flex justify-between">
-				<span>15s</span>
-				<span>30s</span>
-				<span>45s</span>
-				<span>60s</span>
-			</div>
-			<input
-				type="range"
-				bind:value={$duration}
-				min="15"
-				max="60"
-				step="15"
-				class="range range-primary"
-			/>
+		<div class="flex gap-2 grow">
+			{#each [15, 30, 60, 90] as time}
+				<button
+					type="button"
+					on:click={() => duration.set(time)}
+					class="btn grow text-xl"
+					class:btn-primary={$duration == time}
+				>
+					{time}
+				</button>
+			{/each}
 		</div>
 	</div>
 	<div class="divider"></div>

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { appState, correct, incorrect, typedText } from "$lib/stores/stores";
+	import { resetStores } from "$lib/stores/stores";
 	import { focusInput } from "$lib/scripts/focusInput";
 	import { generateWords } from "$lib/scripts/wordGenerator";
 	import { assignWraps } from "$lib/scripts/wrapHandler";
@@ -8,10 +8,7 @@
 		generateWords().then(() => {
 			assignWraps();
 		});
-		typedText.set('');
-		incorrect.set(0);
-		correct.set(0);
-		appState.set("default");
+		resetStores();
 		focusInput();
 	}
 </script>

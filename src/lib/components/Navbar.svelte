@@ -5,12 +5,12 @@
 </script>
 
 <div class="nav transition-opacity" class:hide={$appState == 'running' && $inputFocused}>
-	<div class="flex-none">
+	<div class="flex-1">
 		<a href="/" class="logo">
 			gepiro.hu
 		</a>
 	</div>
-	<div class="flex-1">
+	<div class="flex-none">
 		<NewTestButton />
 	</div>
 	<div class="flex-none">

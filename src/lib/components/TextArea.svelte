@@ -1,5 +1,13 @@
 <script lang="ts">
-	import { text, typedText, prevTypedText, inputFocused, appState, incorrect, correct } from '$lib/stores/stores';
+	import {
+		text,
+		typedText,
+		prevTypedText,
+		inputFocused,
+		appState,
+		incorrect,
+		correct
+	} from '$lib/stores/stores';
 	import { assignWraps, wrapIndexes } from '$lib/scripts/wrapHandler';
 	import { onMount } from 'svelte';
 	import Caret from './Caret.svelte';
@@ -30,12 +38,10 @@
 		if ($appState == 'default' && $typedText.length > 0) appState.set('running');
 
 		if ($prevTypedText && $typedText.length > $prevTypedText.length) {
-			if ($typedText[$typedText.length-1] == $text[$typedText.length-1]) 
-				correct.update(value => value + 1);
-			else
-				incorrect.update(value => value + 1);
-		} 
-			
+			if ($typedText[$typedText.length - 1] == $text[$typedText.length - 1])
+				correct.update((value) => value + 1);
+			else incorrect.update((value) => value + 1);
+		}
 	}
 
 	function focusin() {
@@ -93,7 +99,7 @@
 	#text {
 		font-size: 1.75rem;
 		line-height: 2.5rem;
-		padding: 0 .5rem;
+		padding: 0 0.5rem;
 		color: oklch(var(--bc));
 		position: relative;
 
