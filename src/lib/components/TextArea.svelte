@@ -3,6 +3,7 @@
 	import { assignWraps, wrapIndexes } from '$lib/scripts/wrapHandler';
 	import { onMount } from 'svelte';
 	import Caret from './Caret.svelte';
+	import FocusWarning from './FocusWarning.svelte';
 	import { focusInput } from '$lib/scripts/focusInput';
 	import { generateWords } from '$lib/scripts/wordGenerator';
 
@@ -52,9 +53,7 @@
 			<Caret />
 		{/if}
 	</p>
-	<p class="focus-warning transition-opacity duration-100" class:opacity-0={$inputFocused}>
-		Kattints ide, vagy kezdj el gépelni!
-	</p>
+	<FocusWarning />
 	<textarea bind:value={$typedText} on:focusout={focusout} on:focusin={focusin} id="textInput" />
 </div>
 <svelte:window on:resize={assignWraps} />
@@ -79,11 +78,13 @@
 		top: 0;
 		z-index: 15;
 		opacity: 0;
+		cursor: default;
 	}
 
 	#text {
 		font-size: 1.75rem;
 		line-height: 2.5rem;
+		padding: 0 .5rem;
 		color: oklch(var(--bc));
 		position: relative;
 
@@ -106,13 +107,5 @@
 				text-decoration-thickness: 2px;
 			}
 		}
-	}
-
-	p.focus-warning {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		color: oklch(var(--bc));
 	}
 </style>

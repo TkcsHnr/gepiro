@@ -49,6 +49,7 @@
     .timer {
         display: flex;
         font-size: 1.5rem;
+        padding: 0 .5rem;
         color: oklch(var(--p));
         height: 2rem;
         width: 100%;
