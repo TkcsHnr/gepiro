@@ -33,6 +33,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"sass": "^1.69.5"
+		"sass": "^1.69.5",
+		"theme-change": "^2.5.0"
 	}
 }

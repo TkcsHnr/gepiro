@@ -38,8 +38,8 @@
 	}
 </script>
 
-<div class="text-container transition-[filter]" class:blur-sm={!$inputFocused}>
-	<p bind:this={p} id="text" class="transition-transform duration-100">
+<div class="text-container">
+	<p bind:this={p} id="text" class="transition-all duration-100" class:hide={!$inputFocused}>
 		{#each $text as char, i}
 			<span
 				class:active={i == $typedText.length}
@@ -54,6 +54,9 @@
 			<Caret />
 		{/if}
 	</p>
+	{#if !$inputFocused}
+		<p class="focus-warning">Click here or start typing!</p>
+	{/if}
 	<textarea bind:value={$typedText} on:focusout={focusout} on:focusin={focusin} id="textInput" />
 </div>
 <svelte:window on:resize={assignWraps} />
@@ -61,7 +64,7 @@
 <style lang="scss">
 	.text-container {
 		width: 100%;
-		overflow: hidden;
+		overflow-y: hidden;
 		height: 7.5rem;
 		padding: 1px;
 
@@ -81,11 +84,15 @@
 	}
 
 	#text {
-		font-family: monospace;
 		font-size: 1.75rem;
 		line-height: 2.5rem;
 		color: oklch(var(--bc));
 		position: relative;
+
+		&.hide {
+			opacity: 50%;
+			filter: blur(4px);
+		}
 	}
 
 	#text span {
@@ -101,5 +108,13 @@
 				text-decoration-thickness: 2px;
 			}
 		}
+	}
+
+	p.focus-warning {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		color: oklch(var(--bc));
 	}
 </style>

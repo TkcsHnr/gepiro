@@ -4,14 +4,14 @@
 
 	import { onKeyDown, onKeyUp } from '$lib/scripts/keyboardListener';
 
-	import { keyboard } from '$lib/stores/options';
+	import { keyboard } from '$lib/stores/settings';
 	import RestartButton from '$lib/components/RestartButton.svelte';
 	import Results from '$lib/components/Results.svelte';
 	import { appState } from '$lib/stores/stores';
 	import Timer from '$lib/components/Timer.svelte';
 </script>
 
-<div class="main">
+<div class="h-full flex flex-col items-center justify-center">
 	{#if $appState == 'results'}
 		<Results />
 	{/if}
@@ -27,16 +27,5 @@
 		<Keyboard></Keyboard>
 	{/if}
 </div>
-<svelte:window on:keydown={onKeyDown} on:keyup={onKeyUp} />
 
-<style lang="scss">
-	div.main {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		height: 100%;
-		width: 100%;
-		max-width: 75rem;
-	}
-</style>
+<svelte:window on:keydown={onKeyDown} on:keyup={onKeyUp} />

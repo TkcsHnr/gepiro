@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { typedText, text, appState } from '$lib/stores/stores';
-	import { duration } from '$lib/stores/options';
+	import { duration } from '$lib/stores/settings';
 
 	$: cpm = 0;
 	$: wpm = 0;
@@ -30,8 +30,8 @@
 
 <div class="flex gap-4 p-8">
 	<div class="stats shadow">
-		<div class="stat tooltip" >
-			<div class="stat-title font-mono">wpm</div>
+		<div class="stat" >
+			<div class="stat-title">wpm</div>
 			<div class="stat-value">{wpm.toFixed(0)}</div>
 		</div>
 		<div class="stat">
@@ -63,7 +63,6 @@
 	}
 	.stats {
 		background-color: oklch(var(--b2));
-		font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
-			'Courier New', monospace;
+		border: 1px solid oklch(var(--b3));
 	}
 </style>
