@@ -1,14 +1,12 @@
 <script lang="ts">
-	import { typedText, text, appState } from '$lib/stores/stores';
+	import { typedText, text, appState, correct, incorrect } from '$lib/stores/stores';
 	import { duration } from '$lib/stores/settings';
-	import RestartButton from './RestartButton.svelte';
 
 	$: cpm = 0;
 	$: wpm = 0;
-	$: correct = 0;
-	$: incorrect = 0;
 	$: accuracy = 0;
-
+	$: correctChars = 0;
+	$: incorrectChars = 0;
 	$: $appState, calculate();
 
 	function calculate() {
@@ -17,15 +15,16 @@
 		cpm = ($typedText.length / $duration) * 60;
 		wpm = cpm / 5;
 
-		correct = 0;
-		incorrect = 0;
-
+		correctChars = 0;
+		incorrectChars = 0;
 		for (let i = 0; i < $typedText.length; i++) {
-			if ($text[i] == $typedText[i]) correct++;
-			else incorrect++;
+			if($text[i] == $typedText[i]) 
+				correctChars++;
+			else
+				incorrectChars++;
 		}
 
-		accuracy = (correct / $typedText.length) * 100;
+		accuracy = (1 - $incorrect / $correct) * 100;
 	}
 </script>
 
@@ -50,19 +49,21 @@
 		</div>
 		<div class="stat" title="helyesen leírt karakterek">
 			<div class="stat-title">helyes</div>
-			<div class="stat-value">{correct}</div>
+			<div class="stat-value">{correctChars}</div>
 		</div>
 		<div class="stat" title="helytelenül leírt karakterek">
 			<div class="stat-title">helytelen</div>
-			<div class="stat-value">{incorrect}</div>
+			<div class="stat-value">{incorrectChars}</div>
 		</div>
 	</div>
 </div>
 
 <style lang="scss">
 	h1 {
-		font-size: 2rem;
-		line-height: 2rem;
+		font-size: 1.5rem;
+		line-height: 1.5rem;
+		font-weight: bold;
+		color: oklch(var(--bc));
 	}
 	.stat-title {
 		font-size: 1.5rem;

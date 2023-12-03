@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { text, typedText, inputFocused, appState } from '$lib/stores/stores';
+	import { text, typedText, prevTypedText, inputFocused, appState, incorrect, correct } from '$lib/stores/stores';
 	import { assignWraps, wrapIndexes } from '$lib/scripts/wrapHandler';
 	import { onMount } from 'svelte';
 	import Caret from './Caret.svelte';
@@ -25,9 +25,17 @@
 		});
 	});
 
-	$: $typedText, start();
-	function start() {
+	$: $typedText, onType();
+	function onType() {
 		if ($appState == 'default' && $typedText.length > 0) appState.set('running');
+
+		if ($prevTypedText && $typedText.length > $prevTypedText.length) {
+			if ($typedText[$typedText.length-1] == $text[$typedText.length-1]) 
+				correct.update(value => value + 1);
+			else
+				incorrect.update(value => value + 1);
+		} 
+			
 	}
 
 	function focusin() {

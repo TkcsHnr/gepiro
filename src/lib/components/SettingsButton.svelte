@@ -1,8 +1,10 @@
 <script>
-	import { appState, typedText } from "$lib/stores/stores";
+	import { appState, correct, incorrect, typedText } from "$lib/stores/stores";
 
 	function stop() {
 		typedText.set('');
+		incorrect.set(0);
+		correct.set(0);
 		appState.set("default");
 	}
 </script>

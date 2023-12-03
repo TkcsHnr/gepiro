@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { appState, typedText } from "$lib/stores/stores";
+	import { appState, incorrect, correct, typedText } from "$lib/stores/stores";
 	import { focusInput } from "$lib/scripts/focusInput";
 	import { generateWords } from "$lib/scripts/wordGenerator";
 	import { assignWraps } from "$lib/scripts/wrapHandler";
@@ -9,6 +9,8 @@
 			assignWraps();
 		});
 		typedText.set('');
+		correct.set(0);
+		incorrect.set(0);
 		appState.set("default");
 		focusInput(); 
 		// NEM FOKUSZALODIK AZ INPUT
