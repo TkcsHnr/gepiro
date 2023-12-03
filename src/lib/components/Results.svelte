@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { typedText, text, appState } from '$lib/stores/stores';
 	import { duration } from '$lib/stores/settings';
+	import RestartButton from './RestartButton.svelte';
 
 	$: cpm = 0;
 	$: wpm = 0;
@@ -28,6 +29,8 @@
 	}
 </script>
 
+<h1>Eredmény:</h1>
+
 <div class="flex gap-4 p-8">
 	<div class="stats shadow">
 		<div class="stat" >
@@ -42,21 +45,25 @@
 
 	<div class="stats shadow">
 		<div class="stat">
-			<div class="stat-title">accuracy</div>
+			<div class="stat-title">pontosság</div>
 			<div class="stat-value">{accuracy.toFixed(0)}%</div>
 		</div>
 		<div class="stat">
-			<div class="stat-title">correct</div>
-			<div class="stat-value">{correct}</div>
+			<div class="stat-title">helyes</div>
+			<div class="stat-value" title="helyes karakterleütések száma">{correct}</div>
 		</div>
 		<div class="stat">
-			<div class="stat-title">incorrect</div>
-			<div class="stat-value">{incorrect}</div>
+			<div class="stat-title">helytelen</div>
+			<div class="stat-value" title="helytelen karakterleütések száma">{incorrect}</div>
 		</div>
 	</div>
 </div>
 
 <style lang="scss">
+	h1 {
+		font-size: 2.25rem;
+		line-height: 2.25rem;
+	}
 	.stat-title {
 		font-size: 1.5rem;
 		color: oklch(var(--p));

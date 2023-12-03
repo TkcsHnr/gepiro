@@ -12,9 +12,6 @@
             case "running":
                 start();
                 break;
-            case "results":
-                stop();
-                break;
             case "default":
                 reset();
                 break;

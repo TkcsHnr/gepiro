@@ -3,8 +3,6 @@
     import { onMount } from 'svelte';
     import { themeChange } from 'theme-change';
 
-	let darkMode = false;
-
 	// NOTE: the element that is using one of the theme attributes must be in the DOM on mount
 	onMount(() => {
 		themeChange(false);

@@ -14,10 +14,9 @@ import '../app.css';
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		height: 100%;
 		width: 100%;
 		max-width: 80rem;
-		padding: 0 2rem;
+		padding: 0 2rem 2rem 2rem !important;
 		position: relative;
 	}
 </style>

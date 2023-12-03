@@ -17,7 +17,7 @@
 	}
 
 	onMount(() => {
-		generateWords(50).then(() => {
+		generateWords(100).then(() => {
 			assignWraps();
 			focusInput();
 		});
@@ -25,9 +25,7 @@
 
 	$: $typedText, start();
 	function start() {
-		if ($appState == 'default' && $typedText.length > 0) {
-			appState.set('running');
-		}
+		if ($appState == 'default' && $typedText.length > 0) appState.set('running');
 	}
 
 	function focusin() {
@@ -54,9 +52,9 @@
 			<Caret />
 		{/if}
 	</p>
-	{#if !$inputFocused}
-		<p class="focus-warning">Click here or start typing!</p>
-	{/if}
+	<p class="focus-warning transition-opacity duration-100" class:opacity-0={$inputFocused}>
+		Kattints ide, vagy kezdj el gépelni!
+	</p>
 	<textarea bind:value={$typedText} on:focusout={focusout} on:focusin={focusin} id="textInput" />
 </div>
 <svelte:window on:resize={assignWraps} />

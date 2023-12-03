@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { appState } from '$lib/stores/stores';
-	import SettingsButton from './SettingsButton.svelte'
+	import { appState, inputFocused } from '$lib/stores/stores';
+	import SettingsButton from './SettingsButton.svelte';
 </script>
 
-<div class="navbar transition-opacity" class:hide={$appState == 'running'}>
+<div class="nav transition-opacity" class:hide={$appState == 'running' && $inputFocused}>
 	<div class="flex-1">
-		<a href="/" class="text-2xl font-bold text-primary">
+		<a href="/" class="logo">
 			gepiro.hu
 		</a>
 	</div>
@@ -15,11 +15,17 @@
 </div>
 
 <style lang="scss">
-	.navbar {
-		padding: 1.5rem 0 !important;
-		position: absolute;
-		left: 0;
-		top: 0;
+	.logo {
+		font-size: 1.5rem;
+		line-height: 1.5rem;
+		font-weight: bold;
+		color: oklch(var(--p));
+	}
+	.nav {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		padding: 2rem 0 !important;
 		&.hide {
 			opacity: 0;
 		}

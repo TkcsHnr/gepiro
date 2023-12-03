@@ -34,7 +34,7 @@
 
 <style>
 	.caret {
-		height: 1.8rem;
+		height: 2rem;
 		border: 1px solid oklch(var(--p));
 		position: absolute;
 		z-index: 20;

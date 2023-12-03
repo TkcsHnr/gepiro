@@ -5,27 +5,50 @@
 </script>
 
 <div class="settings">
-	<div class="flex items-center gap-4">
-		<p>Show keyboard:</p>
+	<div class="divider"></div>
+	<div class="row">
+		<p>Billentyűzet megjelenítése:</p>
 		<input type="checkbox" bind:checked={$keyboard} class="toggle toggle-primary" />
 	</div>
-
+	<div class="divider"></div>
+	<div class="row">
+		<p>Teszt ideje:</p>
+		<div class="grow">
+			<div class="w-full flex justify-between">
+				<span>15s</span>
+				<span>30s</span>
+				<span>45s</span>
+				<span>60s</span>
+			</div>
+			<input
+				type="range"
+				bind:value={$duration}
+				min="15"
+				max="60"
+				step="15"
+				class="range range-primary"
+			/>
+		</div>
+	</div>
+	<div class="divider"></div>
 	<div class="flex flex-col gap-4">
-        <p>Select theme:</p>
-        <ThemeSelector />
-    </div>
+		<p>Válassz témát:</p>
+		<ThemeSelector />
+	</div>
 </div>
 
 <style lang="scss">
 	div.settings {
-		height: 100%;
 		display: flex;
 		flex-direction: column;
 		max-width: 60rem;
-		justify-content: center;
-		gap: 2rem;
+	}
+	div.row {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
 	}
 	p {
-		font-size: 1.5rem;
+		font-size: 1.25rem;
 	}
 </style>
