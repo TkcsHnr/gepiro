@@ -1,6 +1,6 @@
 <script lang="ts">
     import { appState } from "$lib/stores/stores";
-    import { duration } from "$lib/stores/options";
+    import { duration } from "$lib/stores/settings";
 	import { get } from "svelte/store";
 
     let timer: number;
@@ -43,12 +43,12 @@
     }
 </script>
 
-<div class="timer font-mono transition-opacity"
+<div class="timer transition-opacity"
      class:show={$appState == "running"}>
     {time}
 </div>
 
-<style>
+<style lang="scss">
     .timer {
         display: flex;
         font-size: 1.5rem;
