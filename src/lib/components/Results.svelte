@@ -23,8 +23,8 @@
 			else
 				incorrectChars++;
 		}
-
-		accuracy = (1 - $incorrect / $correct) * 100;
+		if($correct == 0) accuracy = 0;
+		else accuracy = (1 - $incorrect / $correct) * 100;
 	}
 </script>
 

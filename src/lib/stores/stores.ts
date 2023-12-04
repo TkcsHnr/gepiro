@@ -15,6 +15,7 @@ export const incorrect: Writable<number> = writable(0);
 export function resetStores() {
     appState.set("default");
     typedText.set("");
+    typedText.set("");
     correct.set(0);
     incorrect.set(0);
 }

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Navbar from '$lib/components/Navbar.svelte';
+	import Navbar from '$lib/components/navigation/Navbar.svelte';
 import '../app.css';
 </script>
 
@@ -15,7 +15,7 @@ import '../app.css';
 		flex-direction: column;
 		align-items: center;
 		width: 100%;
-		max-width: 80rem;
+		max-width: 76rem;
 		padding: 0 1rem 2rem 1rem !important;
 		position: relative;
 	}

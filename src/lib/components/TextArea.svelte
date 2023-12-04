@@ -37,7 +37,7 @@
 	function onType() {
 		if ($appState == 'default' && $typedText.length > 0) appState.set('running');
 
-		if ($prevTypedText && $typedText.length > $prevTypedText.length) {
+		if (!$prevTypedText || $typedText.length > $prevTypedText.length) {
 			if ($typedText[$typedText.length - 1] == $text[$typedText.length - 1])
 				correct.update((value) => value + 1);
 			else incorrect.update((value) => value + 1);

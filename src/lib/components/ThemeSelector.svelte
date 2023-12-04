@@ -1,7 +1,7 @@
 <script>
 	import { themes } from '$lib/themes.json';
-    import { onMount } from 'svelte';
-    import { themeChange } from 'theme-change';
+	import { onMount } from 'svelte';
+	import { themeChange } from 'theme-change';
 
 	// NOTE: the element that is using one of the theme attributes must be in the DOM on mount
 	onMount(() => {
@@ -10,29 +10,50 @@
 	});
 </script>
 
-<div id="grid">
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
 	{#each themes as theme}
-        <button data-set-theme="{theme}" class="btn btn-lg font-mono" data-theme={theme}>
-            {theme}
-            <p>
-                <span class="badge badge-primary">A</span>
-                <span class="badge badge-secondary">A</span>
-                <span class="badge badge-accent">A</span>
-            </p>
-        </button>
+		<button data-set-theme={theme} class="btn btn-lg font-mono">
+			<div class="inside" data-theme={theme}>
+				<p>{theme}</p>
+				<p class="flex gap-1">
+					<span class="badge badge-primary">A</span>
+					<span class="badge badge-secondary">A</span>
+					<span class="badge badge-accent">A</span>
+					<span class="badge badge-neutral">A</span>
+				</p>
+			</div>
+		</button>
 	{/each}
 </div>
 
 <style lang="scss">
-    #grid {
-        display: flex;
-        flex-wrap: wrap;
+    .grid {
+        width: 100%;
         gap: 1rem;
     }
-    .btn {
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-        border-color: oklch(var(--b3));
-    }
+	.btn {
+		flex-grow: 1;
+		display: flex;
+		flex-direction: column;
+		border-color: oklch(var(--b3));
+		position: relative;
+		overflow: hidden;
+        padding: 0;
+
+        .inside {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: .5rem;
+            padding: 0 1.5rem;
+        }
+	}
+
+	span.badge {
+		border-radius: 3px;
+		aspect-ratio: 1;
+	}
 </style>
