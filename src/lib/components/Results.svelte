@@ -9,36 +9,40 @@
 	$: incorrectChars = 0;
 	$: $appState, calculate();
 
+	export let speed: boolean = true;
+
 	function calculate() {
 		if ($appState != 'results') return;
 
-		cpm = ($typedText.length / $duration) * 60;
-		wpm = cpm / 5;
+		if (speed) {
+			cpm = ($typedText.length / $duration) * 60;
+			wpm = cpm / 5;
+		}
 
 		correctChars = 0;
 		incorrectChars = 0;
 		for (let i = 0; i < $typedText.length; i++) {
-			if($text[i] == $typedText[i]) 
-				correctChars++;
-			else
-				incorrectChars++;
+			if ($text[i] == $typedText[i]) correctChars++;
+			else incorrectChars++;
 		}
-		if($correct == 0) accuracy = 0;
-		else accuracy = (1 - $incorrect / $correct) * 100;
+		if ($correct == 0) accuracy = 0;
+		else accuracy = ($correct / ($correct + $incorrect)) * 100;
 	}
 </script>
 
-<div class="flex gap-4 p-8">
-	<div class="stats shadow">
-		<div class="stat" title="leírt szavak/perc">
-			<div class="stat-title">wpm</div>
-			<div class="stat-value">{wpm.toFixed(0)}</div>
+<div class="flex gap-4 pb-8 flex-wrap justify-center">
+	{#if speed}
+		<div class="stats shadow">
+			<div class="stat" title="leírt szavak/perc">
+				<div class="stat-title">wpm</div>
+				<div class="stat-value">{wpm.toFixed(0)}</div>
+			</div>
+			<div class="stat" title="leírt karakterek/perc">
+				<div class="stat-title">cpm</div>
+				<div class="stat-value">{cpm.toFixed(0)}</div>
+			</div>
 		</div>
-		<div class="stat" title="leírt karakterek/perc">
-			<div class="stat-title">cpm</div>
-			<div class="stat-value">{cpm.toFixed(0)}</div>
-		</div>
-	</div>
+	{/if}
 
 	<div class="stats shadow">
 		<div class="stat">

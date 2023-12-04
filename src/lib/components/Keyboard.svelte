@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { text, typedText } from '$lib/stores/stores';
-	import { keyboardSize } from '$lib/stores/settings';
 	import { keyboardState, caps, pressedKeys } from '$lib/scripts/keyboardListener';
 	import { rows } from '$lib/keys.json';
 	import { onMount } from 'svelte';
@@ -32,7 +31,7 @@
 		<div class="row">
 			{#each row as key}
 				<kbd
-					class="kbd kbd-{$keyboardSize} transition-colors {key.code}"
+					class="kbd kbd-lg transition-colors {key.code}"
 					class:grow={key.grow}
 					class:caps={key.code == 'CapsLock' && $caps}
 					class:press={pressTheseKeys.includes(key.code)}
@@ -51,7 +50,6 @@
 		display: flex;
 		flex-direction: column;
 		gap: 4px; //0.25rem
-		margin-top: 2rem;
 
 		.row {
 			display: flex;
@@ -60,19 +58,23 @@
 		}
 	}
 	kbd {
-		transition-duration: 50ms;
+		transition-duration: 100ms;
 		&.press {
 			background-color: oklch(var(--p));
 			color: oklch(var(--pc));
 		}
 		&.caps {
+			background-color: oklch(var(--wa) / 0.1);
 			border-color: oklch(var(--wa));
+			color: oklch(var(--wa));
 		}
 		&.correct {
+			background-color: oklch(var(--su) / 0.1);
 			border-color: oklch(var(--su));
 			color: oklch(var(--su));
 		}
 		&.incorrect {
+			background-color: oklch(var(--er) / 0.1);
 			border-color: oklch(var(--er));
 			color: oklch(var(--er));
 		}

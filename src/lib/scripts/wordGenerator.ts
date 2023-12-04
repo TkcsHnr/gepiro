@@ -5,7 +5,7 @@ import { get } from 'svelte/store';
 
 const length = words.length;
 
-export async function generateWords(number?: number, array?: boolean): Promise<boolean> {
+export async function generateWords(number?: number): Promise<boolean> {
     let wordList: string[] = [];
 
     if(!number)

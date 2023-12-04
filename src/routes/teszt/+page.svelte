@@ -9,6 +9,19 @@
 	import Results from '$lib/components/Results.svelte';
 	import { appState } from '$lib/stores/stores';
 	import Timer from '$lib/components/Timer.svelte';
+
+	import { onMount } from 'svelte';
+	import { generateWords } from '$lib/scripts/wordGenerator';
+	import { assignWraps } from '$lib/scripts/wrapHandler';
+	import { focusInput } from '$lib/scripts/focusInput';
+
+	onMount(() => {
+		// max 200 wpm-nyi szó
+		generateWords().then(() => {
+			assignWraps();
+			focusInput();
+		});
+	});
 </script>
 
 <svelte:head>
@@ -25,12 +38,12 @@
 	{#if $appState != 'results'}
 		<Timer />
 		<TextArea></TextArea>
-	{/if}
-
-	{#if $keyboard && $appState != 'results'}
-		<Keyboard></Keyboard>
-	{:else}
-		<div class="h-32"></div>
+		<div class="h-8"></div>
+		{#if $keyboard}
+			<Keyboard></Keyboard>
+		{:else}
+			<div class="h-32"></div>
+		{/if}
 	{/if}
 </div>
 

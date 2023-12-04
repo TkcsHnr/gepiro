@@ -1,4 +1,7 @@
 <script lang="ts">
     
 </script>
-home
+
+<svelte:head>
+    <title>gepiro.hu</title>
+</svelte:head>

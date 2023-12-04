@@ -12,8 +12,6 @@
 	import { onMount } from 'svelte';
 	import Caret from './Caret.svelte';
 	import FocusWarning from './FocusWarning.svelte';
-	import { focusInput } from '$lib/scripts/focusInput';
-	import { generateWords } from '$lib/scripts/wordGenerator';
 
 	const textLineHeight = 2.5;
 
@@ -24,14 +22,6 @@
 		let translate = 'translateY(' + (wrapCount * -textLineHeight).toString() + 'rem)';
 		if (p) p.style.transform = translate;
 	}
-
-	onMount(() => {
-		// max 200 wpm-nyi szó
-		generateWords().then(() => {
-			assignWraps();
-			focusInput();
-		});
-	});
 
 	$: $typedText, onType();
 	function onType() {
@@ -77,7 +67,8 @@
 	.text-container {
 		width: 100%;
 		overflow-y: hidden;
-		height: 7.5rem;
+		max-height: 7.5rem;
+		height: 100%;
 		padding: 1px;
 
 		display: flex;

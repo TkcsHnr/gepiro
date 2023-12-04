@@ -1,21 +1,9 @@
 <script lang="ts">
 	import { appState, inputFocused } from '$lib/stores/stores';
 	import { resetStores } from '$lib/stores/stores';
-	import { focusInput } from '$lib/scripts/focusInput';
-	import { generateWords } from '$lib/scripts/wordGenerator';
-	import { assignWraps } from '$lib/scripts/wrapHandler';
 	import LearnSvg from '../svg/LearnSvg.svelte';
 	import KeyboardSvg from '../svg/KeyboardSvg.svelte';
 	import SettingsSvg from '../svg/SettingsSvg.svelte';
-
-	function startNew() {
-		generateWords().then(() => {
-			assignWraps();
-		});
-		resetStores();
-		focusInput();
-		// NEM FOKUSZALODIK AZ INPUT
-	}
 </script>
 
 <div class="nav transition-opacity" class:hide={$appState == 'running' && $inputFocused}>
@@ -24,21 +12,13 @@
 			gepiro<span>.hu</span>
 		</a>
 	</div>
-	<a
-		on:click={resetStores}
-		href="/tanulas"
-		class="opacity-60 hover:opacity-100 transition-opacity"
-	>
+	<a on:click={resetStores} href="/tanulas" class="opacity-60 hover:opacity-100 transition-opacity">
 		<span class="hidden sm:inline-block">Tanulás</span>
 		<span title="Tanulás">
 			<LearnSvg />
 		</span>
 	</a>
-	<a
-		on:click={startNew}
-		href="/teszt"
-		class="opacity-60 hover:opacity-100 transition-opacity"
-	>
+	<a on:click={resetStores} href="/teszt" class="opacity-60 hover:opacity-100 transition-opacity">
 		<span class="hidden sm:inline-block">Teszt</span>
 		<span title="Teszt">
 			<KeyboardSvg />
@@ -58,8 +38,8 @@
 
 <style lang="scss">
 	.logo {
-		font-size: 1.5rem;
-		line-height: 1.5rem;
+		font-size: 1.75rem;
+		line-height: 1.75rem;
 		font-weight: bold;
 		color: oklch(var(--p));
 
