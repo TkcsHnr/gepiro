@@ -74,8 +74,5 @@
       {"code": "", "default": "", "shift": "", "altgr": "", "caps": ""},
       {"code": "ControlRight", "default": "Ctrl", "shift": "Ctrl", "altgr": "Ctrl", "caps": "Ctrl"}
     ]
-  ],
-  "shifts": [
-    "§", "'", "\"", "+", "!", "%", "/", "=", "(", ")", "Ö", "Ü", "Ó", "Q", "W", "E", "R", "T", "Z", "U", "I", "O", "P", "Ő", "Ú", "A", "S", "D", "F", "G", "H", "J", "K", "L", "É", "Á", "Ű", "Í", "Y", "X", "C", "V", "B", "N", "M", "?", ":", "_"
   ]
 }

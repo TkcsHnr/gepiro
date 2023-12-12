@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { keyboard, duration } from '$lib/stores/settings';
+	import { preferences } from '$lib/stores/stores';
 
 	import ThemeSelector from '$lib/components/ThemeSelector.svelte';
 </script>
@@ -16,9 +16,9 @@
 			{#each [15, 30, 60, 90] as time}
 				<button
 					type="button"
-					on:click={() => duration.set(time)}
+					on:click={() => ($preferences.testDuration = time)}
 					class="btn grow text-lg"
-					class:btn-primary={$duration == time}
+					class:btn-primary={$preferences.testDuration == time}
 				>
 					{time}
 				</button>
@@ -28,7 +28,7 @@
 	<div class="divider"></div>
 	<div class="row">
 		<p>Billentyűzet megjelenítése:</p>
-		<input type="checkbox" bind:checked={$keyboard} class="toggle toggle-primary" />
+		<input type="checkbox" bind:checked={$preferences.showKeyboard} class="toggle toggle-primary" />
 	</div>
 	<div class="divider"></div>
 	<div class="flex flex-col gap-4">
@@ -49,10 +49,9 @@
 		align-items: center;
 		gap: 1rem;
 		flex-wrap: wrap;
-
-		p {
-			font-size: 1.125rem;
-		}
+	}
+	p {
+		font-size: 1.125rem;
 	}
 	div.buttons {
 		display: flex;

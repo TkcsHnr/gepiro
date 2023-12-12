@@ -4,6 +4,7 @@
 	import LearnSvg from '../svg/LearnSvg.svelte';
 	import KeyboardSvg from '../svg/KeyboardSvg.svelte';
 	import SettingsSvg from '../svg/SettingsSvg.svelte';
+	import { page } from '$app/stores';
 </script>
 
 <div class="nav transition-opacity" class:hide={$appState == 'running' && $inputFocused}>
@@ -12,13 +13,23 @@
 			gepiro<span>.hu</span>
 		</a>
 	</div>
-	<a on:click={resetStores} href="/tanulas" class="opacity-60 hover:opacity-100 transition-opacity">
+	<a
+		on:click={resetStores}
+		href="/tanulas"
+		class:opacity-100={$page.url.pathname == '/tanulas'}
+		class="opacity-60 hover:opacity-100 transition-opacity"
+	>
 		<span class="hidden sm:inline-block">Tanulás</span>
 		<span title="Tanulás">
 			<LearnSvg />
 		</span>
 	</a>
-	<a on:click={resetStores} href="/teszt" class="opacity-60 hover:opacity-100 transition-opacity">
+	<a
+		on:click={resetStores}
+		href="/teszt"
+		class:opacity-100={$page.url.pathname == '/teszt'}
+		class="opacity-60 hover:opacity-100 transition-opacity"
+	>
 		<span class="hidden sm:inline-block">Teszt</span>
 		<span title="Teszt">
 			<KeyboardSvg />
@@ -27,6 +38,7 @@
 	<a
 		on:click={resetStores}
 		href="/beallitasok"
+		class:opacity-100={$page.url.pathname == "/beallitasok"}
 		class="opacity-60 hover:opacity-100 transition-opacity"
 	>
 		<span class="hidden sm:inline-block">Beállítások</span>

@@ -1,10 +1,10 @@
 <script lang="ts">
     import { appState } from "$lib/stores/stores";
-    import { duration } from "$lib/stores/settings";
-	import { get } from "svelte/store";
+    import { preferences } from "$lib/stores/stores";
+    import { get } from "svelte/store";
 
     let timer: number;
-    $: time = get(duration);
+    $: time = get(preferences).testDuration;
 
     $: $appState, handleState();
     function handleState() {
@@ -36,7 +36,7 @@
 
     function reset() {
         stop();
-        time = $duration;
+        time = $preferences.testDuration;
     }
 </script>
 

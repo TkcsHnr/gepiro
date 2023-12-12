@@ -1,8 +1,7 @@
 <script lang="ts">
 	import Navbar from '$lib/components/navigation/Navbar.svelte';
-import '../app.css';
+	import '../app.css';
 </script>
-
 
 <main class="font-mono">
 	<Navbar />

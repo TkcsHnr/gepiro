@@ -1,10 +1,9 @@
 <script lang="ts">
-	import { typedText, text, appState, correct, incorrect } from '$lib/stores/stores';
-	import { duration } from '$lib/stores/settings';
+	import { typedText, text, appState, correct, incorrect, accuracy } from '$lib/stores/stores';
+	import { preferences } from '$lib/stores/stores';
 
 	$: cpm = 0;
 	$: wpm = 0;
-	$: accuracy = 0;
 	$: correctChars = 0;
 	$: incorrectChars = 0;
 	$: $appState, calculate();
@@ -15,7 +14,7 @@
 		if ($appState != 'results') return;
 
 		if (speed) {
-			cpm = ($typedText.length / $duration) * 60;
+			cpm = ($typedText.length / $preferences.testDuration) * 60;
 			wpm = cpm / 5;
 		}
 
@@ -25,8 +24,8 @@
 			if ($text[i] == $typedText[i]) correctChars++;
 			else incorrectChars++;
 		}
-		if ($correct == 0) accuracy = 0;
-		else accuracy = ($correct / ($correct + $incorrect)) * 100;
+		if ($correct == 0) accuracy.set(0);
+		else accuracy.set(($correct / ($correct + $incorrect)) * 100);
 	}
 </script>
 
@@ -47,7 +46,7 @@
 	<div class="stats shadow">
 		<div class="stat">
 			<div class="stat-title">pontosság</div>
-			<div class="stat-value">{accuracy.toFixed(0)}%</div>
+			<div class="stat-value">{$accuracy.toFixed(0)}%</div>
 		</div>
 		<div class="stat" title="helyesen leírt karakterek">
 			<div class="stat-title">helyes</div>

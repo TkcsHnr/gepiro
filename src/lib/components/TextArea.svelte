@@ -9,7 +9,6 @@
 		correct
 	} from '$lib/stores/stores';
 	import { assignWraps, wrapIndexes } from '$lib/scripts/wrapHandler';
-	import { onMount } from 'svelte';
 	import Caret from './Caret.svelte';
 	import FocusWarning from './FocusWarning.svelte';
 
@@ -43,7 +42,7 @@
 </script>
 
 <div class="text-container">
-	<p bind:this={p} id="text" class="transition-all duration-100" class:hide={!$inputFocused}>
+	<p bind:this={p} id="text" class="transition-all duration-300" class:hide={!$inputFocused}>
 		{#each $text as char, i}
 			<span
 				class:active={i == $typedText.length}

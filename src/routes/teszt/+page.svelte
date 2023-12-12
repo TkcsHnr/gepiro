@@ -4,7 +4,7 @@
 
 	import { onKeyDown, onKeyUp } from '$lib/scripts/keyboardListener';
 
-	import { keyboard } from '$lib/stores/settings';
+	import { preferences } from '$lib/stores/stores';
 	import RestartButton from '$lib/components/RestartButton.svelte';
 	import Results from '$lib/components/Results.svelte';
 	import { appState } from '$lib/stores/stores';
@@ -39,7 +39,7 @@
 		<Timer />
 		<TextArea></TextArea>
 		<div class="h-8"></div>
-		{#if $keyboard}
+		{#if $preferences.showKeyboard}
 			<Keyboard></Keyboard>
 		{:else}
 			<div class="h-32"></div>
