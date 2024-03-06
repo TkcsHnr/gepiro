@@ -1,9 +1,9 @@
 import { get, writable, type Writable } from "svelte/store";
 import { focusInput } from "./focusInput";
 
-export const keyboardState: Writable<"default" | "shift" | "altgr" | "caps"> = writable("default");
-export const pressedKeys: Writable<string[]> = writable([]);
-export const caps: Writable<boolean> = writable(false);
+export const keyboardState = writable<"default" | "shift" | "altgr" | "caps">("default");
+export const pressedKeys = writable<string[]>([]);
+export const caps = writable<boolean>(false);
 
 export function onKeyDown(e: KeyboardEvent) {
     pressedKeys.update(before => [...new Set([...before, e.code])]);

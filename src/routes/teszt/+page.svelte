@@ -17,6 +17,7 @@
 
 	onMount(() => {
 		// max 200 wpm-nyi szó
+		// TODO: magyar szólista
 		generateWords().then(() => {
 			assignWraps();
 			focusInput();
