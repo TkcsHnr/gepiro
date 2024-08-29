@@ -11,18 +11,26 @@
 	import Timer from '$lib/components/Timer.svelte';
 
 	import { onMount } from 'svelte';
-	import { generateWords } from '$lib/scripts/wordGenerator';
+	import { generateTest } from '$lib/scripts/wordGenerator';
 	import { assignWraps } from '$lib/scripts/wrapHandler';
 	import { focusInput } from '$lib/scripts/focusInput';
+	import { resetStores } from '$lib/stores/stores';
 
 	onMount(() => {
-		// max 200 wpm-nyi szó
-		// TODO: magyar szólista
-		generateWords().then(() => {
+		// max 300 wpm-nyi szó
+		generateTest().then(() => {
 			assignWraps();
 			focusInput();
 		});
 	});
+
+	function restart() {
+		generateTest().then(() => {
+			assignWraps();
+		});
+		resetStores();
+		focusInput();
+	}
 </script>
 
 <svelte:head>
@@ -34,7 +42,7 @@
 		<Results />
 	{/if}
 
-	<RestartButton />
+	<RestartButton {restart} />
 
 	{#if $appState != 'results'}
 		<Timer />

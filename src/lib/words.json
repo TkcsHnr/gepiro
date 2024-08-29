@@ -1,7 +1,7 @@
 {
 	"letters": {
 		"f": ["ff", "fff"],
-		"j": ["fj", "jf", "fjj", "jff"],
+		"j": ["fj", "jj", "fjj", "jff"],
 		"d": ["ddf", "ddj", "dfd", "djd", "djf"],
 		"k": ["dkk", "kjk", "kfk", "jfk"],
 		"s": ["kss", "sfj", "sd", "fs"],

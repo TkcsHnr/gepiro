@@ -1,16 +1,5 @@
 <script lang="ts">
-	import { resetStores } from "$lib/stores/stores";
-	import { focusInput } from "$lib/scripts/focusInput";
-	import { generateWords } from "$lib/scripts/wordGenerator";
-	import { assignWraps } from "$lib/scripts/wrapHandler";
-
-	function restart() {
-		generateWords().then(() => {
-			assignWraps();
-		});
-		resetStores();
-		focusInput();
-	}
+	export let restart;
 </script>
 
 <button type="button" on:click={restart} title="újrakezdés" class="transition-all opacity-60 hover:opacity-100 active:rotate-90">

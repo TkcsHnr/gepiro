@@ -23,7 +23,7 @@ export const preferences = persisted('preferences', {
 	testDuration: 30
 });
 
-export const current_key_i = writable<number>(0);
+export const current_key_i = persisted('current_key_i', 0);
 
 export function resetStores() {
 	appState.set('default');
