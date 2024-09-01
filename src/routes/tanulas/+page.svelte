@@ -58,7 +58,7 @@
 </script>
 
 <svelte:head>
-	<title>Teszt</title>
+	<title>Tanulás</title>
 </svelte:head>
 
 <div class="h-full flex flex-col items-center justify-center gap-8">
